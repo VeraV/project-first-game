@@ -1,0 +1,114 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url("/project-first-game/assets/background.png");
+  text-align: center;
+  background-size: cover;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #333;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
+  font-family: "Peralta", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+header {
+  margin-top: 40px;
+}
+
+#start-screen {
+  display: block;
+}
+
+#main-screen {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+#stats {
+  display: flex;
+  justify-content: space-around;
+  width: 600px;
+  height: 100px;
+  border: 2px solid red;
+}
+
+#stats > section {
+  text-align: left;
+}
+
+/*#progress {
+  width: 100%;
+  background-color: #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+#progressBar {
+  height: 20px;
+  background-color: #4caf50;
+  width: 0%;
+  border-radius: 8px;
+}*/
+
+#game-screen {
+  width: 100%;
+  height: 600px;
+  border: 2px solid green;
+}
+
+#finish-screen {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+#activity-list-container {
+  height: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+#activity-list-container > section {
+  padding: 20px;
+  width: 170px;
+}
+
+.icon {
+  width: 70px;
+  margin: 15px;
+}
+
+#extra-work-icon {
+  width: 40px;
+}
+
+.activity-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  height: 90px;
+  width: 180px;
+  border: 2px solid #bfcb9d;
+  box-shadow: 10px 5px 5px #bfcb9d;
+  margin: 40px;
+  font-size: 1.5em;
+}

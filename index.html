@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../project-first-game/styles/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Peralta&display=swap"
+      rel="stylesheet"
+    />
+    <title>Work Life Balance</title>
+  </head>
+  <body>
+    <div id="start-screen">
+      <header>
+        <h1>Work Life Balance</h1>
+        <p>Move a girl with arrow keys catch or avoid work & life activities</p>
+      </header>
+      <div id="activity-list-container">
+        <section>
+          <article class="activity-container">
+            <img
+              id="extra-work-icon"
+              class="icon"
+              src="/project-first-game/assets/more-money.png"
+            />
+            <span>Extra work</span>
+          </article>
+          <article class="activity-container">
+            <img class="icon" src="/project-first-game/assets/bed.png" />
+            <span>Good sleep</span>
+          </article>
+          <article class="activity-container">
+            <img class="icon" src="/project-first-game/assets/gym.png" />
+            <span>Sports</span>
+          </article>
+          <article class="activity-container">
+            <img class="icon" src="/project-first-game/assets/friends.png" />
+            <span>Friends</span>
+          </article>
+        </section>
+
+        <section>
+          <article class="activity-container">
+            <img class="icon" src="/project-first-game/assets/conflict.png" />
+            <span>Conflict</span>
+          </article>
+          <article class="activity-container">
+            <img class="icon" src="/project-first-game/assets/island.png" />
+            <span>Vacation</span>
+          </article>
+          <article class="activity-container">
+            <img class="icon" src="/project-first-game/assets/crowd.png" />
+            <span>Crowd</span>
+          </article>
+        </section>
+      </div>
+      <p>
+        Keep <b>energy</b> and <b>money</b> level high, build
+        <b>resilience</b> - it helps to save energy ;-)
+      </p>
+      <button id="start" class="nice-font">Start!</button>
+    </div>
+
+    <div id="main-screen">
+      <section id="stats">
+        <section>
+          <p>Energy: <span id="energy-level"></span></p>
+          <p>Resilience: <span id="resilience-level"></span></p>
+        </section>
+
+        <section>
+          <p>Money: <span id="money-level"></span></p>
+          <p>Time remain: <span id="time-level"></span></p>
+        </section>
+      </section>
+      <div id="game-screen"></div>
+    </div>
+
+    <div id="finish-screen">
+      <h2>Game Results:</h2>
+      <section class="result-section">
+        <p>Energy: <span id="energy-result"></span></p>
+        <p>Resilience: <span id="resilience-result"></span></p>
+        <p>Money: <span id="money-result"></span></p>
+        <p>Time: <span id="time-result"></span></p>
+      </section>
+      <button id="play-again">Play Again!</button>
+    </div>
+
+    <script src="/project-first-game/js/game.js"></script>
+    <script src="/project-first-game/js/script.js"></script>
+    <script src="/project-first-game/js/player.js"></script>
+    <script src="/project-first-game/js/activity.js"></script>
+  </body>
+</html>
