@@ -6,6 +6,7 @@ class Activity {
     imgSrc,
     energyLevel,
     resilienceLevel,
+    isChallenging,
     moneyLevel,
     timeLevel
   ) {
@@ -29,6 +30,7 @@ class Activity {
     this.resilienceLevel = resilienceLevel;
     this.moneyLevel = moneyLevel;
     this.timeLevel = timeLevel;
+    this.isChallenging = isChallenging;
   }
 
   updatePosition() {
@@ -47,15 +49,15 @@ class Activity {
 
 class ExtraWork extends Activity {
   constructor(gameScreen) {
-    const imgSrc = "/project-first-game/assets/more-money.png";
+    const imgSrc = "/assets/more-money.png";
     const width = 50;
     const height = 60;
 
     /*the score changes*/
-    const energyLevel = -20;
-    const resilienceLevel = 10;
-    const moneyLevel = 100;
-    const timeLevel = -30;
+    const energyLevel = 20; // will reduce energy isChallenging
+    const resilienceLevel = 0; //1;
+    const moneyLevel = 36; // 12 euro per hour x 3 hour = 36 euro
+    const timeLevel = -3;
 
     super(
       gameScreen,
@@ -64,6 +66,7 @@ class ExtraWork extends Activity {
       imgSrc,
       energyLevel,
       resilienceLevel,
+      true, //challenging activity
       moneyLevel,
       timeLevel
     );
@@ -74,15 +77,15 @@ class ExtraWork extends Activity {
 
 class GoodSleep extends Activity {
   constructor(gameScreen) {
-    const imgSrc = "/project-first-game/assets/bed.png";
+    const imgSrc = "/assets/bed.png";
     const width = 120;
     const height = 90;
 
     /*the score changes*/
-    const energyLevel = 20;
-    const resilienceLevel = 10;
+    const energyLevel = 30;
+    const resilienceLevel = 0; //10;
     const moneyLevel = 0;
-    const timeLevel = -10;
+    const timeLevel = -8;
 
     super(
       gameScreen,
@@ -91,6 +94,7 @@ class GoodSleep extends Activity {
       imgSrc,
       energyLevel,
       resilienceLevel,
+      false, //not a challenging activity
       moneyLevel,
       timeLevel
     );
@@ -101,15 +105,15 @@ class GoodSleep extends Activity {
 
 class Sports extends Activity {
   constructor(gameScreen) {
-    const imgSrc = "/project-first-game/assets/gym.png";
+    const imgSrc = "/assets/gym.png";
     const width = 70;
     const height = 50;
 
     /*the score changes*/
-    const energyLevel = -10;
-    const resilienceLevel = 10;
-    const moneyLevel = -10;
-    const timeLevel = -10;
+    const energyLevel = 10; // will reduce energy isChallenging
+    const resilienceLevel = 0; //10;
+    const moneyLevel = -5; //5 euro per hour normal for Lisbon
+    const timeLevel = -2; //1 hour of gym + 1 hour for get there and come back
 
     super(
       gameScreen,
@@ -118,6 +122,7 @@ class Sports extends Activity {
       imgSrc,
       energyLevel,
       resilienceLevel,
+      true, //challenging activity
       moneyLevel,
       timeLevel
     );
@@ -128,15 +133,15 @@ class Sports extends Activity {
 
 class Friends extends Activity {
   constructor(gameScreen) {
-    const imgSrc = "/project-first-game/assets/friends.png";
+    const imgSrc = "/assets/friends.png";
     const width = 120;
     const height = 100;
 
     /*the score changes*/
-    const energyLevel = 30;
-    const resilienceLevel = 20;
-    const moneyLevel = -10;
-    const timeLevel = -20;
+    const energyLevel = 20;
+    const resilienceLevel = 0; //20;
+    const moneyLevel = -30; //30 euros for restauramt or visit something in the town
+    const timeLevel = -2;
 
     super(
       gameScreen,
@@ -145,6 +150,7 @@ class Friends extends Activity {
       imgSrc,
       energyLevel,
       resilienceLevel,
+      false, //not a challenging activity
       moneyLevel,
       timeLevel
     );
@@ -155,15 +161,15 @@ class Friends extends Activity {
 
 class Conflict extends Activity {
   constructor(gameScreen) {
-    const imgSrc = "/project-first-game/assets/conflict.png";
+    const imgSrc = "/assets/conflict.png";
     const width = 120;
     const height = 80;
 
     /*the score changes*/
-    const energyLevel = -40;
-    const resilienceLevel = 10;
+    const energyLevel = 15; // will reduce energy isChallenging
+    const resilienceLevel = 0; //10;
     const moneyLevel = 0;
-    const timeLevel = 0;
+    const timeLevel = -1;
 
     super(
       gameScreen,
@@ -172,6 +178,7 @@ class Conflict extends Activity {
       imgSrc,
       energyLevel,
       resilienceLevel,
+      true, //challenging activity
       moneyLevel,
       timeLevel
     );
@@ -182,15 +189,15 @@ class Conflict extends Activity {
 
 class Vacation extends Activity {
   constructor(gameScreen) {
-    const imgSrc = "/project-first-game/assets/island.png";
+    const imgSrc = "/assets/island.png";
     const width = 150;
     const height = 140;
 
     /*the score changes*/
-    const energyLevel = 100;
-    const resilienceLevel = 30;
-    const moneyLevel = -100;
-    const timeLevel = -100;
+    const energyLevel = 80;
+    const resilienceLevel = 0; //40;
+    const moneyLevel = -1000; // 1000 euro for a good 2 weeks vacation
+    const timeLevel = -336; //2 weeks (24 hours x 7 days x 2 weeks = 336 hours)
 
     super(
       gameScreen,
@@ -199,6 +206,7 @@ class Vacation extends Activity {
       imgSrc,
       energyLevel,
       resilienceLevel,
+      false, //not a challenging activity
       moneyLevel,
       timeLevel
     );
@@ -209,15 +217,15 @@ class Vacation extends Activity {
 
 class Crowd extends Activity {
   constructor(gameScreen) {
-    const imgSrc = "/project-first-game/assets/crowd.png";
+    const imgSrc = "/assets/crowd.png";
     const width = 130;
     const height = 100;
 
     /*the score changes*/
-    const energyLevel = -40;
-    const resilienceLevel = 10;
+    const energyLevel = 15; // will reduce energy isChallenging
+    const resilienceLevel = 0; //10;
     const moneyLevel = 0;
-    const timeLevel = -10;
+    const timeLevel = -2;
 
     super(
       gameScreen,
@@ -226,6 +234,7 @@ class Crowd extends Activity {
       imgSrc,
       energyLevel,
       resilienceLevel,
+      true, //challenging activity
       moneyLevel,
       timeLevel
     );

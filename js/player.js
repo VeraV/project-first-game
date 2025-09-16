@@ -9,7 +9,7 @@ class Player {
     this.directionY = 0;
 
     this.imgElemet = document.createElement("img");
-    this.imgElemet.src = "/project-first-game/assets/player.png";
+    this.imgElemet.src = "/assets/player.png";
     this.imgElemet.style.position = "absolute";
     // Set up the default element's property values
     this.imgElemet.style.width = `${this.width}px`;
