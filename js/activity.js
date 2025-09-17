@@ -47,7 +47,7 @@ class Activity {
 
 class ExtraWork extends Activity {
   constructor(gameScreen) {
-    const imgSrc = "/assets/more-money.png";
+    const imgSrc = "assets/more-money.png";
     const width = 50;
     const height = 60;
 
@@ -73,7 +73,7 @@ class ExtraWork extends Activity {
 
 class GoodSleep extends Activity {
   constructor(gameScreen) {
-    const imgSrc = "/assets/bed.png";
+    const imgSrc = "assets/bed.png";
     const width = 120;
     const height = 90;
 
@@ -99,7 +99,7 @@ class GoodSleep extends Activity {
 
 class Sports extends Activity {
   constructor(gameScreen) {
-    const imgSrc = "/assets/gym.png";
+    const imgSrc = "assets/gym.png";
     const width = 70;
     const height = 50;
 
@@ -125,7 +125,7 @@ class Sports extends Activity {
 
 class Friends extends Activity {
   constructor(gameScreen) {
-    const imgSrc = "/assets/friends.png";
+    const imgSrc = "assets/friends.png";
     const width = 120;
     const height = 100;
 
@@ -151,7 +151,7 @@ class Friends extends Activity {
 
 class Conflict extends Activity {
   constructor(gameScreen) {
-    const imgSrc = "/assets/conflict.png";
+    const imgSrc = "assets/conflict.png";
     const width = 120;
     const height = 80;
 
@@ -177,7 +177,7 @@ class Conflict extends Activity {
 
 class Vacation extends Activity {
   constructor(gameScreen) {
-    const imgSrc = "/assets/island.png";
+    const imgSrc = "assets/island.png";
     const width = 150;
     const height = 140;
 
@@ -203,7 +203,7 @@ class Vacation extends Activity {
 
 class Crowd extends Activity {
   constructor(gameScreen) {
-    const imgSrc = "/assets/crowd.png";
+    const imgSrc = "assets/crowd.png";
     const width = 130;
     const height = 100;
 
