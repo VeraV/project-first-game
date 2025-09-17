@@ -42,8 +42,8 @@ class Player {
     }
 
     // handles bottom side
-    if (this.top > this.gameScreen.offsetHeight - this.height - 10) {
-      this.top = this.gameScreen.offsetHeight - this.height - 10;
+    if (this.top > this.gameScreen.offsetHeight - this.height - 120) {
+      this.top = this.gameScreen.offsetHeight - this.height - 120;
     }
 
     // Update the player's car position on the screen

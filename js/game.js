@@ -15,16 +15,17 @@ class Game {
     /*stats values*/
     this.energyLevel = 50; //initial value for the game
     this.resilienceLevel = 0; //initial value for the game
-    this.timeLevel = 365 * 24; //initial value for the game, 1 year
-    this.moneyLevel = 24000; //initial value for the game
+    this.timeLevel = 1000; //365 * 24; //initial value for the game, 1 year
+    this.moneyLevel = 2400; //initial value for the game
 
-    this.energyLevelElement = document.getElementById("energy-level");
+    this.progressBar = document.querySelector("#progressBar");
     this.resilienceLevelElement = document.getElementById("resilience-level");
     this.moneyLevelElement = document.getElementById("money-level");
     this.timeLevelElement = document.getElementById("time-level");
 
     /*game results*/
     this.energyResultElement = document.getElementById("energy-result");
+    this.progressBarResult = document.querySelector("#progressBarResult");
     this.resilienceResultElement = document.getElementById("resilience-result");
     this.moneyResultElement = document.getElementById("money-result");
     this.timeResultElement = document.getElementById("time-result");
@@ -158,10 +159,36 @@ class Game {
   }
 
   updateStats() {
-    this.energyLevelElement.innerText = this.energyLevel;
+    //this.energyLevelElement.innerText = this.energyLevel;
     this.resilienceLevelElement.innerText = this.resilienceLevel;
     this.moneyLevelElement.innerText = this.moneyFormat();
     this.timeLevelElement.innerText = this.timeFormat();
+
+    this.progressBar.style.width = `${this.energyLevel}%`;
+    this.makeEnergyProgressBarNice(this.progressBar);
+  }
+
+  makeEnergyProgressBarNice(progressBar) {
+    progressBar.style.width = `${this.energyLevel}%`;
+    progressBar.style.display = "block";
+    //apply different color (class) to the progress bar
+    switch (true) {
+      case this.energyLevel > 0 && this.energyLevel <= 20:
+        progressBar.classList.add("dangerous-zone");
+        progressBar.classList.remove("normal-zone");
+        progressBar.classList.remove("exellent-zone");
+        break;
+      case this.energyLevel > 20 && this.energyLevel <= 80:
+        progressBar.classList.remove("dangerous-zone");
+        progressBar.classList.add("normal-zone");
+        progressBar.classList.remove("exellent-zone");
+        break;
+      case this.energyLevel > 80:
+        progressBar.classList.remove("dangerous-zone");
+        progressBar.classList.remove("normal-zone");
+        progressBar.classList.add("exellent-zone");
+        break;
+    }
   }
 
   gameOver() {
@@ -177,15 +204,34 @@ class Game {
     });
 
     //update result elements on the finish screen
-    this.energyResultElement.innerText =
-      this.energyLevel <= 0
-        ? "No energy left..."
-        : `Energy: ${this.energyLevel}`;
+    if (this.energyLevel <= 0) {
+      this.energyResultElement.innerText = "No energy left...";
+      this.energyResultElement.classList.add("dangerous-zone");
+      this.progressBarResult.parentElement.style.display = "none";
+    } else {
+      this.energyResultElement.innerText = "Energy:";
+      this.progressBarResult.parentElement.style.display = "block";
+      this.makeEnergyProgressBarNice(this.progressBarResult);
+      this.energyResultElement.classList.remove("dangerous-zone");
+    }
+
     this.resilienceResultElement.innerText = this.resilienceLevel;
-    this.moneyResultElement.innerText =
-      this.moneyLevel <= 0 ? "No money left.." : `Money: ${this.moneyFormat()}`;
-    this.timeResultElement.innerText =
-      this.timeLevel <= 0 ? "No time left..." : `Time: ${this.timeFormat()}`;
+
+    if (this.moneyLevel <= 0) {
+      this.moneyResultElement.innerText = "No money left...";
+      this.moneyResultElement.classList.add("dangerous-zone");
+    } else {
+      this.moneyResultElement.innerText = `Money: ${this.moneyFormat()}`;
+      this.moneyResultElement.classList.remove("dangerous-zone");
+    }
+
+    if (this.timeLevel <= 0) {
+      this.timeResultElement.innerText = "No time left...";
+      this.timeResultElement.classList.add("dangerous-zone");
+    } else {
+      this.timeResultElement.innerText = `Time: ${this.timeFormat()}`;
+      this.timeResultElement.classList.remove("dangerous-zone");
+    }
   }
 
   setEnergyResilienseLevels(activity) {

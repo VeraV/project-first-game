@@ -5,7 +5,6 @@ class Activity {
     height,
     imgSrc,
     energyLevel,
-    resilienceLevel,
     isChallenging,
     moneyLevel,
     timeLevel
@@ -17,7 +16,7 @@ class Activity {
     this.height = height; //the height of activity icon
 
     this.activityImg = document.createElement("img");
-    this.activityImg.src = imgSrc; //"./images/redCar.png";
+    this.activityImg.src = imgSrc;
     this.activityImg.style.position = "absolute";
     this.activityImg.style.width = `${this.width}px`;
     this.activityImg.style.height = `${this.height}px`;
@@ -27,7 +26,6 @@ class Activity {
     this.gameScreen.appendChild(this.activityImg);
 
     this.energyLevel = energyLevel;
-    this.resilienceLevel = resilienceLevel;
     this.moneyLevel = moneyLevel;
     this.timeLevel = timeLevel;
     this.isChallenging = isChallenging;
@@ -55,7 +53,6 @@ class ExtraWork extends Activity {
 
     /*the score changes*/
     const energyLevel = 20; // will reduce energy isChallenging
-    const resilienceLevel = 0; //1;
     const moneyLevel = 36; // 12 euro per hour x 3 hour = 36 euro
     const timeLevel = -3;
 
@@ -65,7 +62,6 @@ class ExtraWork extends Activity {
       height,
       imgSrc,
       energyLevel,
-      resilienceLevel,
       true, //challenging activity
       moneyLevel,
       timeLevel
@@ -83,7 +79,6 @@ class GoodSleep extends Activity {
 
     /*the score changes*/
     const energyLevel = 30;
-    const resilienceLevel = 0; //10;
     const moneyLevel = 0;
     const timeLevel = -8;
 
@@ -93,7 +88,6 @@ class GoodSleep extends Activity {
       height,
       imgSrc,
       energyLevel,
-      resilienceLevel,
       false, //not a challenging activity
       moneyLevel,
       timeLevel
@@ -111,7 +105,6 @@ class Sports extends Activity {
 
     /*the score changes*/
     const energyLevel = 10; // will reduce energy isChallenging
-    const resilienceLevel = 0; //10;
     const moneyLevel = -5; //5 euro per hour normal for Lisbon
     const timeLevel = -2; //1 hour of gym + 1 hour for get there and come back
 
@@ -121,7 +114,6 @@ class Sports extends Activity {
       height,
       imgSrc,
       energyLevel,
-      resilienceLevel,
       true, //challenging activity
       moneyLevel,
       timeLevel
@@ -139,7 +131,6 @@ class Friends extends Activity {
 
     /*the score changes*/
     const energyLevel = 20;
-    const resilienceLevel = 0; //20;
     const moneyLevel = -30; //30 euros for restauramt or visit something in the town
     const timeLevel = -2;
 
@@ -149,7 +140,6 @@ class Friends extends Activity {
       height,
       imgSrc,
       energyLevel,
-      resilienceLevel,
       false, //not a challenging activity
       moneyLevel,
       timeLevel
@@ -167,7 +157,6 @@ class Conflict extends Activity {
 
     /*the score changes*/
     const energyLevel = 15; // will reduce energy isChallenging
-    const resilienceLevel = 0; //10;
     const moneyLevel = 0;
     const timeLevel = -1;
 
@@ -177,7 +166,6 @@ class Conflict extends Activity {
       height,
       imgSrc,
       energyLevel,
-      resilienceLevel,
       true, //challenging activity
       moneyLevel,
       timeLevel
@@ -195,7 +183,6 @@ class Vacation extends Activity {
 
     /*the score changes*/
     const energyLevel = 80;
-    const resilienceLevel = 0; //40;
     const moneyLevel = -1000; // 1000 euro for a good 2 weeks vacation
     const timeLevel = -336; //2 weeks (24 hours x 7 days x 2 weeks = 336 hours)
 
@@ -205,7 +192,6 @@ class Vacation extends Activity {
       height,
       imgSrc,
       energyLevel,
-      resilienceLevel,
       false, //not a challenging activity
       moneyLevel,
       timeLevel
@@ -223,7 +209,6 @@ class Crowd extends Activity {
 
     /*the score changes*/
     const energyLevel = 15; // will reduce energy isChallenging
-    const resilienceLevel = 0; //10;
     const moneyLevel = 0;
     const timeLevel = -2;
 
@@ -233,7 +218,6 @@ class Crowd extends Activity {
       height,
       imgSrc,
       energyLevel,
-      resilienceLevel,
       true, //challenging activity
       moneyLevel,
       timeLevel

@@ -70,7 +70,11 @@
     <div id="main-screen">
       <section id="stats">
         <section>
-          <p>Energy: <span id="energy-level"></span></p>
+          <div class="energyLevelFlex">
+            <div>Energy:</div>
+            <div class="energy-level"><div id="progressBar"></div></div>
+          </div>
+
           <p>Resilience: <span id="resilience-level"></span></p>
         </section>
 
@@ -85,10 +89,13 @@
     <div id="finish-screen">
       <h2>Game Results:</h2>
       <section class="result-section">
-        <p><span id="energy-result"></span></p>
-        <p>Resilience: <span id="resilience-result"></span></p>
-        <p><span id="money-result"></span></p>
-        <p><span id="time-result"></span></p>
+        <div class="energyLevelFlex">
+          <div id="energy-result">Energy:</div>
+          <div class="energy-level"><div id="progressBarResult"></div></div>
+        </div>
+        <div>Resilience: <span id="resilience-result"></span></div>
+        <div><span id="money-result"></span></div>
+        <div><span id="time-result"></span></div>
       </section>
       <button id="play-again">Play Again!</button>
     </div>

@@ -1,7 +1,6 @@
 body {
   margin: 0;
   padding: 0;
-  /*background-image: url("/assets/background.png");*/
   text-align: center;
   background-size: cover;
   font-family: "Roboto", sans-serif;
@@ -35,7 +34,6 @@ header {
 }
 
 section {
-  /*background-color: aquamarine;*/
   margin: 0;
 }
 
@@ -46,10 +44,7 @@ section {
   align-items: center;
   background-image: url("/assets/backgr-start-finish-1.png");
   background-size: cover;
-  /*background-repeat: no-repeat;*/
   height: 100vh;
-
-  /*object-fit: cover;*/
 }
 
 #main-screen {
@@ -79,36 +74,49 @@ section {
 
 #stats > section {
   text-align: left;
+  width: 250px;
 }
 
-/*#progress {
-  width: 100%;
+.energyLevelFlex {
+  padding-top: 18px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 250px;
+}
+
+.energy-level {
+  width: 180px;
   background-color: #ddd;
   border-radius: 8px;
   overflow: hidden;
-  margin-bottom: 5px;
+  height: 8px;
 }
 
-#progressBar {
-  height: 20px;
-  background-color: #4caf50;
-  width: 0%;
+#progressBar,
+#progressBarResult {
+  height: 8px;
+  width: 50%;
   border-radius: 8px;
-}*/
+}
+
+.normal-zone {
+  background-color: #f6cd36;
+}
+
+.exellent-zone {
+  background-color: #4caf50;
+}
+
+.dangerous-zone {
+  background-color: #f01947;
+  color: white;
+}
 
 #game-screen {
   width: 100%;
   height: 600px;
   border: 2px solid green;
-}
-
-#finish-screen {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  background-image: url("/assets/backgr-start-finish-1.png");
-  background-size: cover;
-  height: 100vh;
 }
 
 #activity-list-container {
@@ -124,7 +132,6 @@ section {
 
 #activity-list-container > section {
   padding: 20px;
-  /*width: 190px;*/
 }
 
 .icon {
@@ -151,6 +158,43 @@ button {
   font-size: 1.5em;
 }
 
+#finish-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-image: url("/assets/backgr-start-finish-1.png");
+  background-size: cover;
+  height: 100vh;
+}
+
+#finish-screen > * {
+  margin: 10px auto;
+}
+
 #finish-screen > h2 {
-  margin-top: 40px;
+  padding-top: 70px;
+  margin: 0;
+  font-size: 3rem;
+}
+
+.result-section {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.result-section span {
+  padding: 10px;
+}
+
+.result-section > div {
+  padding: 10px;
+}
+
+#energy-result {
+  padding: 10px;
 }
