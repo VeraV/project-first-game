@@ -159,7 +159,7 @@ button {
 }
 
 #finish-screen {
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -169,12 +169,7 @@ button {
   height: 100vh;
 }
 
-#finish-screen > * {
-  margin: 10px auto;
-}
-
 #finish-screen > h2 {
-  padding-top: 70px;
   margin: 0;
   font-size: 3rem;
 }

@@ -195,7 +195,7 @@ class Game {
     //hide the game screen
     this.gameScreen.style.display = "none";
     //show the game over screen
-    this.finishScreen.style.display = "block";
+    this.finishScreen.style.display = "flex";
     //remove the player from the game screen
     this.player.imgElemet.remove();
     //remove all the objects left
