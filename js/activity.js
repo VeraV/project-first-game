@@ -7,7 +7,8 @@ class Activity {
     energyLevel,
     isChallenging,
     moneyLevel,
-    timeLevel
+    timeLevel,
+    sound
   ) {
     this.gameScreen = gameScreen;
     this.left = 1350; //the initial horizontal position of the obstacle.
@@ -29,6 +30,9 @@ class Activity {
     this.moneyLevel = moneyLevel;
     this.timeLevel = timeLevel;
     this.isChallenging = isChallenging;
+
+    this.sound = new Audio(sound);
+    this.sound.volume = 0.2;
   }
 
   updatePosition() {
@@ -48,6 +52,7 @@ class Activity {
 class ExtraWork extends Activity {
   constructor(gameScreen) {
     const imgSrc = "assets/more-money.png";
+    const sound = "assets/money-sound.mp3";
     const width = 50;
     const height = 60;
 
@@ -64,7 +69,8 @@ class ExtraWork extends Activity {
       energyLevel,
       true, //challenging activity
       moneyLevel,
-      timeLevel
+      timeLevel,
+      sound
     );
 
     this.name = "Extra work";
@@ -74,6 +80,7 @@ class ExtraWork extends Activity {
 class GoodSleep extends Activity {
   constructor(gameScreen) {
     const imgSrc = "assets/bed.png";
+    const sound = "assets/oh-yes.mp3";
     const width = 120;
     const height = 90;
 
@@ -90,7 +97,8 @@ class GoodSleep extends Activity {
       energyLevel,
       false, //not a challenging activity
       moneyLevel,
-      timeLevel
+      timeLevel,
+      sound
     );
 
     this.name = "Good Sleep";
@@ -100,6 +108,7 @@ class GoodSleep extends Activity {
 class Sports extends Activity {
   constructor(gameScreen) {
     const imgSrc = "assets/gym.png";
+    const sound = "assets/wow.mp3";
     const width = 70;
     const height = 50;
 
@@ -116,7 +125,8 @@ class Sports extends Activity {
       energyLevel,
       true, //challenging activity
       moneyLevel,
-      timeLevel
+      timeLevel,
+      sound
     );
 
     this.name = "Sports";
@@ -126,6 +136,7 @@ class Sports extends Activity {
 class Friends extends Activity {
   constructor(gameScreen) {
     const imgSrc = "assets/friends.png";
+    const sound = "assets/friends-sound.mov";
     const width = 120;
     const height = 100;
 
@@ -142,7 +153,8 @@ class Friends extends Activity {
       energyLevel,
       false, //not a challenging activity
       moneyLevel,
-      timeLevel
+      timeLevel,
+      sound
     );
 
     this.name = "Friends";
@@ -152,6 +164,7 @@ class Friends extends Activity {
 class Conflict extends Activity {
   constructor(gameScreen) {
     const imgSrc = "assets/conflict.png";
+    const sound = "assets/cartoon-punch.m4a";
     const width = 120;
     const height = 80;
 
@@ -168,7 +181,8 @@ class Conflict extends Activity {
       energyLevel,
       true, //challenging activity
       moneyLevel,
-      timeLevel
+      timeLevel,
+      sound
     );
 
     this.name = "Conflict";
@@ -178,6 +192,7 @@ class Conflict extends Activity {
 class Vacation extends Activity {
   constructor(gameScreen) {
     const imgSrc = "assets/island.png";
+    const sound = "assets/whooo.mp3";
     const width = 150;
     const height = 140;
 
@@ -194,7 +209,8 @@ class Vacation extends Activity {
       energyLevel,
       false, //not a challenging activity
       moneyLevel,
-      timeLevel
+      timeLevel,
+      sound
     );
 
     this.name = "Vacation";
@@ -204,6 +220,7 @@ class Vacation extends Activity {
 class Crowd extends Activity {
   constructor(gameScreen) {
     const imgSrc = "assets/crowd.png";
+    const sound = "assets/crowd-sound.m4a";
     const width = 130;
     const height = 100;
 
@@ -220,7 +237,8 @@ class Crowd extends Activity {
       energyLevel,
       true, //challenging activity
       moneyLevel,
-      timeLevel
+      timeLevel,
+      sound
     );
 
     this.name = "Crowd";

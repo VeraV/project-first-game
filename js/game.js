@@ -10,13 +10,13 @@ class Game {
 
     this.player = this.player = new Player(this.gameScreen, 200, 500);
 
-    this.activities = []; //array of work-life activities
+    this.activities = [];
 
     /*stats values*/
-    this.energyLevel = 50; //initial value for the game
-    this.resilienceLevel = 0; //initial value for the game
-    this.timeLevel = 1000; //365 * 24; //initial value for the game, 1 year
-    this.moneyLevel = 2400; //initial value for the game
+    this.energyLevel = 50;
+    this.resilienceLevel = 0;
+    this.timeLevel = 1000; //365 * 24; //1 year
+    this.moneyLevel = 2400;
 
     this.progressBar = document.querySelector("#progressBar");
     this.resilienceLevelElement = document.getElementById("resilience-level");
@@ -34,11 +34,19 @@ class Game {
 
     this.gameLoopFrecuency = Math.round(1000 / 60);
     this.frame = 0;
+
+    /*music and sounds*/
+    this.backgroundMusic = new Audio(
+      "assets/Clement Panchout _ Fluttering in the Sun _ (The GodMOTHer).wav"
+    );
+    this.gameOverSound = new Audio("assets/oh-no.mp3");
+    this.gameOverSound.volume = 0.1;
+    this.backgroundMusic.volume = 0.05;
   }
 
   start() {
     this.addRandomActivity();
-    //Sets the height and width of the game screen.
+
     this.startScreen.style.display = "none";
     this.finishScreen.style.display = "none";
     this.gameScreen.style.display = "flex";
@@ -53,15 +61,14 @@ class Game {
     }, 1000);
 
     //start money increase (girl has a stable job, she works 8 hours per day, her Hourly Pay Rate = €12, salary around €2000 per month)
-    //BUT we can't add EACH hour €12 (only each 8 hours per day) => €12 x 8h = €96 per day
-    //interval for timer: 1 day = 24 hours = 24 sec (=24000 in code)
-    //OR better if we see the change faster => €12 / 24h
+    //€12 / 24h = €0.5 per hour (1 sec in the game)
     this.moneyUpIntervalId = setInterval(() => {
       this.moneyLevel += 0.5;
       this.updateStats();
     }, 1000);
 
     this.updateStats();
+    this.backgroundMusic.play();
   }
 
   gameLoop() {
@@ -77,29 +84,21 @@ class Game {
   update() {
     this.player.move();
 
-    //this moves all the activity icons
     for (let i = 0; i < this.activities.length; i++) {
       const activity = this.activities[i];
       activity.move();
 
-      //if the activity goes off the screen on the left...
-      //splice from array, and remove the element
       if (activity.left < 0) {
         this.activities.splice(i, 1);
-        //dont forget to remove the element from the DOM
         activity.activityImg.remove();
-        /*no changes in the stats if no activity was chosen*/
       }
 
-      //check if the girl chose the activity
       if (this.player.didChoose(activity)) {
-        //remove the activity from js array with .splice
+        activity.sound.play();
         this.activities.splice(i, 1);
-        //remove the DOM img from the game screen
         activity.activityImg.remove();
 
         /******stats changes*******/
-        //logic a bit complecated, that's why it's in a separate method
         this.setEnergyResilienseLevels(activity);
         this.moneyLevel += activity.moneyLevel;
         this.timeLevel += activity.timeLevel;
@@ -107,9 +106,7 @@ class Game {
         /*update the stats HTML*/
         this.updateStats();
 
-        //*check if the game is over*/
         this.checkIfGameIsOver();
-
         if (this.gameIsOver) {
           this.gameOver();
         }
@@ -128,7 +125,6 @@ class Game {
   }
 
   addRandomActivity() {
-    /*randomly create one of the 7 activities*/
     const randomNum = Math.ceil(Math.random() * 7);
     let activity = null;
 
@@ -159,7 +155,6 @@ class Game {
   }
 
   updateStats() {
-    //this.energyLevelElement.innerText = this.energyLevel;
     this.resilienceLevelElement.innerText = this.resilienceLevel;
     this.moneyLevelElement.innerText = this.moneyFormat();
     this.timeLevelElement.innerText = this.timeFormat();
@@ -192,13 +187,11 @@ class Game {
   }
 
   gameOver() {
-    //hide the game screen
+    this.gameOverSound.play();
+
     this.gameScreen.style.display = "none";
-    //show the game over screen
     this.finishScreen.style.display = "flex";
-    //remove the player from the game screen
     this.player.imgElemet.remove();
-    //remove all the objects left
     this.activities.forEach((activity) => {
       activity.activityImg.remove();
     });
@@ -232,6 +225,9 @@ class Game {
       this.timeResultElement.innerText = `Time: ${this.timeFormat()}`;
       this.timeResultElement.classList.remove("dangerous-zone");
     }
+
+    this.backgroundMusic.pause();
+    this.backgroundMusic.currentTime = 0;
   }
 
   setEnergyResilienseLevels(activity) {
@@ -246,32 +242,28 @@ class Game {
 
     //if activity is challenging -- apply complecated logic
     if (activity.isChallenging) {
-      //check the current state of energy with which we faced the challenge
       if (this.energyLevel > 0 && this.energyLevel <= 20) {
         //dangerous state
         this.energyLevel -= activity.energyLevel;
         if (this.resilienceLevel > 0) {
-          //to avoid dividing by 0 can be 0, can't be -1
-          this.resilienceLevel -= 1;
+          this.resilienceLevel -= 1; //to avoid dividing by 0 can be 0, can't be -1
         }
       } else if (this.energyLevel > 20 && this.energyLevel <= 80) {
         //ok state
         this.energyLevel -= Math.round(
           activity.energyLevel / (this.resilienceLevel * 0.1 + 1)
-        ); //to avoid dividing by 0
+        );
         this.resilienceLevel += 1;
-        //exellent state
       } else if (this.energyLevel > 80 && this.energyLevel <= 100) {
+        //exellent state
         this.energyLevel -= Math.round(
           activity.energyLevel / (this.resilienceLevel * 0.5 + 1)
         );
         this.resilienceLevel += 1;
       }
-
-      //if activity is NOT challenging -- just add energy (no changes for resilience)
     } else {
       this.energyLevel += activity.energyLevel;
-      if (this.energyLevel > 100) this.energyLevel = 100; //let's say energy level can't be more then 100
+      if (this.energyLevel > 100) this.energyLevel = 100;
     }
   }
 
